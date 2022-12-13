@@ -1,17 +1,11 @@
-## My Project
+## Go Bindings for <package name>
 
-TODO: Fill this README out!
-
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description on GitHub
+This repository included Go bindings for [cdklabs/cdk-ecs-codedeploy](https://github.com/cdklabs/cdk-ecs-codedeploy).
 
 ## Security
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+See [Security Issue Notifications](CONTRIBUTING.md#security-issue-notifications) for more information.
 
 ## License
 
 This project is licensed under the Apache-2.0 License.
-
