@@ -8,7 +8,7 @@ import (
 
 // Represents an AppSpec to be used for ECS services.
 //
-// {@link https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html#reference-appspec-file-structure-resources-ecs}
+// see: https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html#reference-appspec-file-structure-resources-ecs
 // Experimental.
 type EcsAppSpec interface {
 	// Render JSON string for this AppSpec to be used.

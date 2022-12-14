@@ -10,6 +10,13 @@ import (
 )
 
 // A CodeDeploy Deployment for a Amazon ECS service DeploymentGroup.
+//
+// An `EcsDeploymentGroup`
+// must only have 1 EcsDeployment. This limit is enforced by making the constructor protected
+// and requiring the use of a static method such as `forDeploymentGroup` to initialize.
+// The `scope` will always be set to the `EcsDeploymentGroup` and the `id` will always
+// be set to the string 'Deployment' to force an error if mulitiple EcsDeployment constructs
+// are created for a single EcsDeploymentGroup.
 // Experimental.
 type EcsDeployment interface {
 	constructs.Construct
@@ -92,12 +99,7 @@ func (j *jsiiProxy_EcsDeployment)SetDeploymentId(val *string) {
 	)
 }
 
-// An {@link EcsDeploymentGroup} must only have 1 EcsDeployment.
-//
-// This limit is enforced by not allowing
-// the `scope` or `id` to be passed to the constructor. The `scope` will always be set to the
-// `deploymentGroup` from `props` and the `id` will always be set to the string 'Deployment'
-// to force an error if mulitiple EcsDeployment constructs are created for a single EcsDeploymentGrouop.
+// Create a new deployment for a given `EcsDeploymentGroup`.
 // Experimental.
 func EcsDeployment_ForDeploymentGroup(props *EcsDeploymentProps) EcsDeployment {
 	_init_.Initialize()

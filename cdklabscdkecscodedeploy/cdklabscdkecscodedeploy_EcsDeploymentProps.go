@@ -6,12 +6,12 @@ import (
 	"github.com/aws/aws-cdk-go/awscdk/v2/awscodedeploy"
 )
 
-// Construction properties of {@link EcsDeployment}.
+// Construction properties of EcsDeployment.
 // Experimental.
 type EcsDeploymentProps struct {
 	// The AppSpec to use for the deployment.
 	//
-	// {@link https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html#reference-appspec-file-structure-resources-ecs}
+	// see: https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html#reference-appspec-file-structure-resources-ecs
 	// Experimental.
 	Appspec EcsAppSpec `field:"required" json:"appspec" yaml:"appspec"`
 	// The deployment group to target for this deployment.

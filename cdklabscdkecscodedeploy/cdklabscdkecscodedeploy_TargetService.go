@@ -5,7 +5,7 @@ import (
 	"github.com/aws/aws-cdk-go/awscdk/v2/awsecs"
 )
 
-// Describe the target for CodeDeploy to use when creating a deployment for a {@link ecs.EcsDeploymentGroup}.
+// Describe the target for CodeDeploy to use when creating a deployment for an ecs.EcsDeploymentGroup.
 // Experimental.
 type TargetService struct {
 	// The name of the Amazon ECS container that contains your Amazon ECS application.
@@ -27,7 +27,7 @@ type TargetService struct {
 	CapacityProviderStrategy *[]*awsecs.CapacityProviderStrategy `field:"optional" json:"capacityProviderStrategy" yaml:"capacityProviderStrategy"`
 	// The platform version of the Fargate tasks in the deployed Amazon ECS service.
 	//
-	// {@link https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}
+	// see: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html
 	// Experimental.
 	PlatformVersion awsecs.FargatePlatformVersion `field:"optional" json:"platformVersion" yaml:"platformVersion"`
 }
