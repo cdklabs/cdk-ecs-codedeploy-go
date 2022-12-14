@@ -41,7 +41,7 @@ CodeDeploy for ECS can manage the deployment of new task definitions to ECS serv
 declare const deploymentGroup: codeDeploy.IEcsDeploymentGroup;
 declare const taskDefinition: ecs.ITaskDefinition;
 
-new EcsDeployment({
+EcsDeployment.forDeploymentGroup({
   deploymentGroup,
   appspec: new codedeploy.EcsAppSpec({
     taskDefinition,
@@ -54,7 +54,7 @@ new EcsDeployment({
 The deployment will use the AutoRollbackConfig for the EcsDeploymentGroup unless it is overridden in the deployment:
 
 ```go
-new EcsDeployment({
+EcsDeployment.forDeploymentGroup({
   deploymentGroup,
   appspec: new codedeploy.EcsAppSpec({
     taskDefinition,
@@ -72,7 +72,7 @@ new EcsDeployment({
 By default, the deployment will timeout after 30 minutes. The timeout value can be overridden:
 
 ```go
-new EcsDeployment({
+EcsDeployment.forDeploymentGroup({
   deploymentGroup,
   appspec: new codedeploy.EcsAppSpec({
     taskDefinition,
