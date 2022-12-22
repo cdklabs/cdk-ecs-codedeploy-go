@@ -12,11 +12,10 @@ import (
 // A CodeDeploy Deployment for a Amazon ECS service DeploymentGroup.
 //
 // An EcsDeploymentGroup
-// must only have 1 EcsDeployment. This limit is enforced by making the constructor protected
-// and requiring the use of a static method such as `EcsDeploymentGroup.forDeploymentGroup()` to initialize.
-// The scope will always be set to the EcsDeploymentGroup and the id will always
-// be set to the string 'Deployment' to force an error if mulitiple EcsDeployment constructs
-// are created for a single EcsDeploymentGroup.
+// must only have 1 EcsDeployment. This limit is enforced by removing the scope and id
+// from the constructor. The scope will always be set to the EcsDeploymentGroup
+// and the id will always be set to the string 'Deployment' to force an error if mulitiple
+// EcsDeployment constructs are created for a single EcsDeploymentGroup.
 // Experimental.
 type EcsDeployment interface {
 	constructs.Construct
@@ -60,17 +59,17 @@ func (j *jsiiProxy_EcsDeployment) Node() constructs.Node {
 
 
 // Experimental.
-func NewEcsDeployment(scope constructs.Construct, id *string, props *EcsDeploymentProps) EcsDeployment {
+func NewEcsDeployment(props *EcsDeploymentProps) EcsDeployment {
 	_init_.Initialize()
 
-	if err := validateNewEcsDeploymentParameters(scope, id, props); err != nil {
+	if err := validateNewEcsDeploymentParameters(props); err != nil {
 		panic(err)
 	}
 	j := jsiiProxy_EcsDeployment{}
 
 	_jsii_.Create(
 		"@cdklabs/cdk-ecs-codedeploy.EcsDeployment",
-		[]interface{}{scope, id, props},
+		[]interface{}{props},
 		&j,
 	)
 
@@ -78,12 +77,12 @@ func NewEcsDeployment(scope constructs.Construct, id *string, props *EcsDeployme
 }
 
 // Experimental.
-func NewEcsDeployment_Override(e EcsDeployment, scope constructs.Construct, id *string, props *EcsDeploymentProps) {
+func NewEcsDeployment_Override(e EcsDeployment, props *EcsDeploymentProps) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"@cdklabs/cdk-ecs-codedeploy.EcsDeployment",
-		[]interface{}{scope, id, props},
+		[]interface{}{props},
 		e,
 	)
 }
@@ -97,26 +96,6 @@ func (j *jsiiProxy_EcsDeployment)SetDeploymentId(val *string) {
 		"deploymentId",
 		val,
 	)
-}
-
-// Create a new deployment for a given `EcsDeploymentGroup`.
-// Experimental.
-func EcsDeployment_ForDeploymentGroup(props *EcsDeploymentProps) EcsDeployment {
-	_init_.Initialize()
-
-	if err := validateEcsDeployment_ForDeploymentGroupParameters(props); err != nil {
-		panic(err)
-	}
-	var returns EcsDeployment
-
-	_jsii_.StaticInvoke(
-		"@cdklabs/cdk-ecs-codedeploy.EcsDeployment",
-		"forDeploymentGroup",
-		[]interface{}{props},
-		&returns,
-	)
-
-	return returns
 }
 
 // Checks if `x` is a construct.

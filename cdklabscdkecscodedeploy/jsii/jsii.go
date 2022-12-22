@@ -5,24 +5,26 @@
 package jsii
 
 import (
-	_          "embed"
+	_                     "embed"
 
-	_jsii_     "github.com/aws/jsii-runtime-go/runtime"
+	_jsii_                "github.com/aws/jsii-runtime-go/runtime"
 
-	awscdk     "github.com/aws/aws-cdk-go/awscdk/v2/jsii"
-	constructs "github.com/aws/constructs-go/constructs/v10/jsii"
+	awscdk                "github.com/aws/aws-cdk-go/awscdk/v2/jsii"
+	awscdksyntheticsalpha "github.com/aws/aws-cdk-go/awscdksyntheticsalpha/v2/jsii"
+	constructs            "github.com/aws/constructs-go/constructs/v10/jsii"
 )
 
-//go:embed cdklabs-cdk-ecs-codedeploy-0.0.14.tgz
+//go:embed cdklabs-cdk-ecs-codedeploy-0.0.15.tgz
 var tarball []byte
 
 // Initialize loads the necessary packages in the @jsii/kernel to support the enclosing module.
 // The implementation is idempotent (and hence safe to be called over and over).
 func Initialize() {
 	// Ensure all dependencies are initialized
+	awscdksyntheticsalpha.Initialize()
 	awscdk.Initialize()
 	constructs.Initialize()
 
 	// Load this library into the kernel
-	_jsii_.Load("@cdklabs/cdk-ecs-codedeploy", "0.0.14", tarball)
+	_jsii_.Load("@cdklabs/cdk-ecs-codedeploy", "0.0.15", tarball)
 }
