@@ -9,14 +9,14 @@ import (
 // Construction properties of EcsDeployment.
 // Experimental.
 type EcsDeploymentProps struct {
-	// The AppSpec to use for the deployment.
-	//
-	// see: https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html#reference-appspec-file-structure-resources-ecs
-	// Experimental.
-	Appspec EcsAppSpec `field:"required" json:"appspec" yaml:"appspec"`
 	// The deployment group to target for this deployment.
 	// Experimental.
 	DeploymentGroup awscodedeploy.IEcsDeploymentGroup `field:"required" json:"deploymentGroup" yaml:"deploymentGroup"`
+	// The ECS service to target for the deployment.
+	//
+	// see: https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html#reference-appspec-file-structure-resources-ecs
+	// Experimental.
+	TargetService *TargetService `field:"required" json:"targetService" yaml:"targetService"`
 	// The configuration for rollback in the event that a deployment fails.
 	// Experimental.
 	AutoRollback *awscodedeploy.AutoRollbackConfig `field:"optional" json:"autoRollback" yaml:"autoRollback"`
