@@ -7,7 +7,7 @@ require (
 	github.com/aws/aws-cdk-go/awscdksyntheticsalpha/v2 v2.68.0-alpha.0
 	github.com/aws/aws-cdk-go/awscdk/v2 v2.68.0
 	github.com/aws/constructs-go/constructs/v10 v10.0.5
-	github.com/cdklabs/awscdk-asset-awscli-go/awscliv1/v2 v2.2.101 // indirect
+	github.com/cdklabs/awscdk-asset-awscli-go/awscliv1/v2 v2.2.102 // indirect
 	github.com/cdklabs/awscdk-asset-kubectl-go/kubectlv20/v2 v2.1.1 // indirect
-	github.com/cdklabs/awscdk-asset-node-proxy-agent-go/nodeproxyagentv5/v2 v2.0.81 // indirect
+	github.com/cdklabs/awscdk-asset-node-proxy-agent-go/nodeproxyagentv5/v2 v2.0.82 // indirect
 )
