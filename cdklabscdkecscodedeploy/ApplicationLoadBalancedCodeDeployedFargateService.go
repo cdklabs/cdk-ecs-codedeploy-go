@@ -401,9 +401,6 @@ func (j *jsiiProxy_ApplicationLoadBalancedCodeDeployedFargateService)SetGreenTar
 }
 
 func (j *jsiiProxy_ApplicationLoadBalancedCodeDeployedFargateService)SetHealthAlarm(val awscloudwatch.IAlarm) {
-	if err := j.validateSetHealthAlarmParameters(val); err != nil {
-		panic(err)
-	}
 	_jsii_.Set(
 		j,
 		"healthAlarm",

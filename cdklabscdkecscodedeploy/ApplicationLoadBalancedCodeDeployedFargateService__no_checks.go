@@ -41,10 +41,6 @@ func (j *jsiiProxy_ApplicationLoadBalancedCodeDeployedFargateService) validateSe
 	return nil
 }
 
-func (j *jsiiProxy_ApplicationLoadBalancedCodeDeployedFargateService) validateSetHealthAlarmParameters(val awscloudwatch.IAlarm) error {
-	return nil
-}
-
 func (j *jsiiProxy_ApplicationLoadBalancedCodeDeployedFargateService) validateSetTestListenerParameters(val awselasticloadbalancingv2.ApplicationListener) error {
 	return nil
 }

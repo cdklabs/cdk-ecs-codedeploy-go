@@ -8,7 +8,6 @@ import (
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 
-	"github.com/aws/aws-cdk-go/awscdk/v2/awscloudwatch"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awscodedeploy"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awsecs"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awselasticloadbalancingv2"
@@ -81,14 +80,6 @@ func (j *jsiiProxy_ApplicationLoadBalancedCodeDeployedFargateService) validateSe
 }
 
 func (j *jsiiProxy_ApplicationLoadBalancedCodeDeployedFargateService) validateSetGreenTargetGroupParameters(val awselasticloadbalancingv2.ApplicationTargetGroup) error {
-	if val == nil {
-		return fmt.Errorf("parameter val is required, but nil was provided")
-	}
-
-	return nil
-}
-
-func (j *jsiiProxy_ApplicationLoadBalancedCodeDeployedFargateService) validateSetHealthAlarmParameters(val awscloudwatch.IAlarm) error {
 	if val == nil {
 		return fmt.Errorf("parameter val is required, but nil was provided")
 	}
