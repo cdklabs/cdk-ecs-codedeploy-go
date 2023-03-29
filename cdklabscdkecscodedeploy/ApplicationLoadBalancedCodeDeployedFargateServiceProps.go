@@ -248,5 +248,8 @@ type ApplicationLoadBalancedCodeDeployedFargateServiceProps struct {
 	// The time to wait before terminating the original (blue) task set.
 	// Experimental.
 	TerminationWaitTime awscdk.Duration `field:"optional" json:"terminationWaitTime" yaml:"terminationWaitTime"`
+	// The port to use for test traffic on the listener.
+	// Experimental.
+	TestPort *float64 `field:"optional" json:"testPort" yaml:"testPort"`
 }
 
