@@ -1,6 +1,5 @@
 //go:build !no_runtime_type_checking
 
-// CDK Constructs for performing ECS Deployments with CodeDeploy
 package cdklabscdkecscodedeploy
 
 import (

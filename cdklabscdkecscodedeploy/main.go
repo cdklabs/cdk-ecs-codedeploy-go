@@ -1,3 +1,4 @@
+// CDK Constructs for performing ECS Deployments with CodeDeploy
 package cdklabscdkecscodedeploy
 
 import (
