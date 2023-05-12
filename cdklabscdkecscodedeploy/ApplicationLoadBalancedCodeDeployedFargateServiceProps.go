@@ -241,6 +241,9 @@ type ApplicationLoadBalancedCodeDeployedFargateServiceProps struct {
 	// The healthcheck to configure on the Application Load Balancer target groups.
 	// Experimental.
 	HealthCheck *awselasticloadbalancingv2.HealthCheck `field:"optional" json:"healthCheck" yaml:"healthCheck"`
+	// Optional lifecycle hooks.
+	// Experimental.
+	Hooks *AppSpecHooks `field:"optional" json:"hooks" yaml:"hooks"`
 	// The threshold for response time alarm.
 	// Experimental.
 	ResponseTimeAlarmThreshold awscdk.Duration `field:"optional" json:"responseTimeAlarmThreshold" yaml:"responseTimeAlarmThreshold"`

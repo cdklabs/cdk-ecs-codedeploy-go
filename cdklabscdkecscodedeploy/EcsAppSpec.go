@@ -23,17 +23,17 @@ type jsiiProxy_EcsAppSpec struct {
 }
 
 // Experimental.
-func NewEcsAppSpec(targetService *TargetService) EcsAppSpec {
+func NewEcsAppSpec(targetService *TargetService, hooks *AppSpecHooks) EcsAppSpec {
 	_init_.Initialize()
 
-	if err := validateNewEcsAppSpecParameters(targetService); err != nil {
+	if err := validateNewEcsAppSpecParameters(targetService, hooks); err != nil {
 		panic(err)
 	}
 	j := jsiiProxy_EcsAppSpec{}
 
 	_jsii_.Create(
 		"@cdklabs/cdk-ecs-codedeploy.EcsAppSpec",
-		[]interface{}{targetService},
+		[]interface{}{targetService, hooks},
 		&j,
 	)
 
@@ -41,12 +41,12 @@ func NewEcsAppSpec(targetService *TargetService) EcsAppSpec {
 }
 
 // Experimental.
-func NewEcsAppSpec_Override(e EcsAppSpec, targetService *TargetService) {
+func NewEcsAppSpec_Override(e EcsAppSpec, targetService *TargetService, hooks *AppSpecHooks) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"@cdklabs/cdk-ecs-codedeploy.EcsAppSpec",
-		[]interface{}{targetService},
+		[]interface{}{targetService, hooks},
 		e,
 	)
 }

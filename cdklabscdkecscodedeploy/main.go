@@ -48,6 +48,10 @@ func init() {
 		"@cdklabs/cdk-ecs-codedeploy.ApiTestStep",
 		reflect.TypeOf((*ApiTestStep)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"@cdklabs/cdk-ecs-codedeploy.AppSpecHooks",
+		reflect.TypeOf((*AppSpecHooks)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"@cdklabs/cdk-ecs-codedeploy.ApplicationLoadBalancedCodeDeployedFargateService",
 		reflect.TypeOf((*ApplicationLoadBalancedCodeDeployedFargateService)(nil)).Elem(),

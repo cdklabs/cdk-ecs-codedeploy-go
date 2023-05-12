@@ -22,6 +22,9 @@ type EcsDeploymentProps struct {
 	// The description for the deployment.
 	// Experimental.
 	Description *string `field:"optional" json:"description" yaml:"description"`
+	// Optional lifecycle hooks.
+	// Experimental.
+	Hooks *AppSpecHooks `field:"optional" json:"hooks" yaml:"hooks"`
 	// The timeout for the deployment.
 	//
 	// If the timeout is reached, it will trigger a rollback of the stack.
