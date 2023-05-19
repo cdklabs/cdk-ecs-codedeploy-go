@@ -14,7 +14,7 @@ import (
 	constructs            "github.com/aws/constructs-go/constructs/v10/jsii"
 )
 
-//go:embed cdklabs-cdk-ecs-codedeploy-0.0.161.tgz
+//go:embed cdklabs-cdk-ecs-codedeploy-0.0.162.tgz
 var tarball []byte
 
 // Initialize loads the necessary packages in the @jsii/kernel to support the enclosing module.
@@ -26,5 +26,5 @@ func Initialize() {
 	constructs.Initialize()
 
 	// Load this library into the kernel
-	_jsii_.Load("@cdklabs/cdk-ecs-codedeploy", "0.0.161", tarball)
+	_jsii_.Load("@cdklabs/cdk-ecs-codedeploy", "0.0.162", tarball)
 }
