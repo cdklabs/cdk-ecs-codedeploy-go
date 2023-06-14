@@ -37,49 +37,58 @@ See https://www.nuget.org/packages/Cdklabs.CdkEcsCodeDeploy/
 CodeDeploy for ECS can manage the deployment of new task definitions to ECS services.  Only 1 deployment construct can be defined for a given EcsDeploymentGroup.
 
 ```go
-declare const deploymentGroup: codeDeploy.IEcsDeploymentGroup;
-declare const taskDefinition: ecs.ITaskDefinition;
+var deploymentGroup iEcsDeploymentGroup
+var taskDefinition iTaskDefinition
 
-new EcsDeployment({
-  deploymentGroup,
-  targetService: {
-    taskDefinition,
-    containerName: 'mycontainer',
-    containerPort: 80,
-  },
-});
+
+.NewEcsDeployment(&EcsDeploymentProps{
+	DeploymentGroup: DeploymentGroup,
+	TargetService: &TargetService{
+		TaskDefinition: *TaskDefinition,
+		ContainerName: jsii.String("mycontainer"),
+		ContainerPort: jsii.Number(80),
+	},
+})
 ```
 
 The deployment will use the AutoRollbackConfig for the EcsDeploymentGroup unless it is overridden in the deployment:
 
 ```go
-new EcsDeployment({
-  deploymentGroup,
-  targetService: {
-    taskDefinition,
-    containerName: 'mycontainer',
-    containerPort: 80,
-  },
-  autoRollback: {
-    failedDeployment: true,
-    deploymentInAlarm: true,
-    stoppedDeployment: false,
-  },
-});
+var deploymentGroup iEcsDeploymentGroup
+var taskDefinition iTaskDefinition
+
+
+.NewEcsDeployment(&EcsDeploymentProps{
+	DeploymentGroup: DeploymentGroup,
+	TargetService: &TargetService{
+		TaskDefinition: *TaskDefinition,
+		ContainerName: jsii.String("mycontainer"),
+		ContainerPort: jsii.Number(80),
+	},
+	AutoRollback: &AutoRollbackConfig{
+		FailedDeployment: jsii.Boolean(true),
+		DeploymentInAlarm: jsii.Boolean(true),
+		StoppedDeployment: jsii.Boolean(false),
+	},
+})
 ```
 
 By default, the deployment will timeout after 30 minutes. The timeout value can be overridden:
 
 ```go
-new EcsDeployment({
-  deploymentGroup,
-  targetService: {
-    taskDefinition,
-    containerName: 'mycontainer',
-    containerPort: 80,
-  },
-  timeout: Duration.minutes(60),
-});
+var deploymentGroup iEcsDeploymentGroup
+var taskDefinition iTaskDefinition
+
+
+.NewEcsDeployment(&EcsDeploymentProps{
+	DeploymentGroup: DeploymentGroup,
+	TargetService: &TargetService{
+		TaskDefinition: *TaskDefinition,
+		ContainerName: jsii.String("mycontainer"),
+		ContainerPort: jsii.Number(80),
+	},
+	Timeout: awscdk.Duration_Minutes(jsii.Number(60)),
+})
 ```
 
 ### API Canaries
@@ -87,19 +96,19 @@ new EcsDeployment({
 CodeDeploy can leverage Cloudwatch Alarms to trigger automatic rollbacks. The `ApiCanary` construct simplifies the process for creating CloudWatch Synthetics Canaries to monitor APIs. The following code demonstrates a canary that monitors https://xkcd.com/908/info.0.json and checks the JSON response to assert that `safe_title` has the value of `'The Cloud'`.
 
 ```go
-const canary = new ApiCanary(stack, 'Canary', {
-  baseUrl: 'https://xkcd.com',
-  durationAlarmThreshold: Duration.seconds(5),
-  threadCount: 5,
-  steps: [
-    {
-      name: 'info',
-      path: '/908/info.0.json',
-      jmesPath: 'safe_title',
-      expectedValue: 'The Cloud',
-    },
-  ],
-});
+canary := .NewApiCanary(stack, jsii.String("Canary"), &ApiCanaryProps{
+	BaseUrl: jsii.String("https://xkcd.com"),
+	DurationAlarmThreshold: awscdk.Duration_Seconds(jsii.Number(5)),
+	ThreadCount: jsii.Number(5),
+	Steps: []apiTestStep{
+		&apiTestStep{
+			Name: jsii.String("info"),
+			Path: jsii.String("/908/info.0.json"),
+			JmesPath: jsii.String("safe_title"),
+			ExpectedValue: jsii.String("The Cloud"),
+		},
+	},
+})
 ```
 
 ### Application Load Balanced CodeDeployed Fargate Service
@@ -107,20 +116,23 @@ const canary = new ApiCanary(stack, 'Canary', {
 An L3 construct named `ApplicationLoadBalancedCodeDeployedFargateService` extends [ApplicationLoadBalancedFargateService](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs_patterns.ApplicationLoadBalancedFargateService.html) and adds support for deploying new versions of the service with AWS CodeDeploy. Additionally, an Amazon CloudWatch Synthetic canary is created via the `ApiCanary` construct and is monitored by the CodeDeploy deployment to trigger rollback if the canary begins to alarm.
 
 ```go
-declare const cluster: ecs.ICluster;
-declare const image: ecs.ContainerImage;
-const service = new ApplicationLoadBalancedCodeDeployedFargateService(stack, 'Service', {
-  cluster,
-  taskImageOptions: {
-    image,
-  },
-  apiTestSteps: [{
-    name: 'health',
-    path: '/health',
-    jmesPath: 'status',
-    expectedValue: 'ok',
-  }],
-});
+var cluster iCluster
+var image containerImage
+
+service := .NewApplicationLoadBalancedCodeDeployedFargateService(stack, jsii.String("Service"), &ApplicationLoadBalancedCodeDeployedFargateServiceProps{
+	Cluster: Cluster,
+	TaskImageOptions: &ApplicationLoadBalancedTaskImageOptions{
+		Image: *Image,
+	},
+	ApiTestSteps: []apiTestStep{
+		&apiTestStep{
+			Name: jsii.String("health"),
+			Path: jsii.String("/health"),
+			JmesPath: jsii.String("status"),
+			ExpectedValue: jsii.String("ok"),
+		},
+	},
+})
 ```
 
 ## Local Development
