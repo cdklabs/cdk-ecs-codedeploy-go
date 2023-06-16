@@ -41,7 +41,7 @@ var deploymentGroup iEcsDeploymentGroup
 var taskDefinition iTaskDefinition
 
 
-.NewEcsDeployment(&EcsDeploymentProps{
+cdklabscdkecscodedeploy.NewEcsDeployment(&EcsDeploymentProps{
 	DeploymentGroup: DeploymentGroup,
 	TargetService: &TargetService{
 		TaskDefinition: *TaskDefinition,
@@ -58,7 +58,7 @@ var deploymentGroup iEcsDeploymentGroup
 var taskDefinition iTaskDefinition
 
 
-.NewEcsDeployment(&EcsDeploymentProps{
+cdklabscdkecscodedeploy.NewEcsDeployment(&EcsDeploymentProps{
 	DeploymentGroup: DeploymentGroup,
 	TargetService: &TargetService{
 		TaskDefinition: *TaskDefinition,
@@ -80,7 +80,7 @@ var deploymentGroup iEcsDeploymentGroup
 var taskDefinition iTaskDefinition
 
 
-.NewEcsDeployment(&EcsDeploymentProps{
+cdklabscdkecscodedeploy.NewEcsDeployment(&EcsDeploymentProps{
 	DeploymentGroup: DeploymentGroup,
 	TargetService: &TargetService{
 		TaskDefinition: *TaskDefinition,
@@ -96,7 +96,7 @@ var taskDefinition iTaskDefinition
 CodeDeploy can leverage Cloudwatch Alarms to trigger automatic rollbacks. The `ApiCanary` construct simplifies the process for creating CloudWatch Synthetics Canaries to monitor APIs. The following code demonstrates a canary that monitors https://xkcd.com/908/info.0.json and checks the JSON response to assert that `safe_title` has the value of `'The Cloud'`.
 
 ```go
-canary := .NewApiCanary(stack, jsii.String("Canary"), &ApiCanaryProps{
+canary := cdklabscdkecscodedeploy.NewApiCanary(stack, jsii.String("Canary"), &ApiCanaryProps{
 	BaseUrl: jsii.String("https://xkcd.com"),
 	DurationAlarmThreshold: awscdk.Duration_Seconds(jsii.Number(5)),
 	ThreadCount: jsii.Number(5),
@@ -119,7 +119,7 @@ An L3 construct named `ApplicationLoadBalancedCodeDeployedFargateService` extend
 var cluster iCluster
 var image containerImage
 
-service := .NewApplicationLoadBalancedCodeDeployedFargateService(stack, jsii.String("Service"), &ApplicationLoadBalancedCodeDeployedFargateServiceProps{
+service := cdklabscdkecscodedeploy.NewApplicationLoadBalancedCodeDeployedFargateService(stack, jsii.String("Service"), &ApplicationLoadBalancedCodeDeployedFargateServiceProps{
 	Cluster: Cluster,
 	TaskImageOptions: &ApplicationLoadBalancedTaskImageOptions{
 		Image: *Image,
