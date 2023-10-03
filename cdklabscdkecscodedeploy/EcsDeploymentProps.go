@@ -17,17 +17,25 @@ type EcsDeploymentProps struct {
 	// Experimental.
 	TargetService *TargetService `field:"required" json:"targetService" yaml:"targetService"`
 	// The configuration for rollback in the event that a deployment fails.
+	// Default: : no automatic rollback triggered.
+	//
 	// Experimental.
 	AutoRollback *awscodedeploy.AutoRollbackConfig `field:"optional" json:"autoRollback" yaml:"autoRollback"`
 	// The description for the deployment.
+	// Default: no description.
+	//
 	// Experimental.
 	Description *string `field:"optional" json:"description" yaml:"description"`
 	// Optional lifecycle hooks.
+	// Default: - no lifecycle hooks.
+	//
 	// Experimental.
 	Hooks *AppSpecHooks `field:"optional" json:"hooks" yaml:"hooks"`
 	// The timeout for the deployment.
 	//
 	// If the timeout is reached, it will trigger a rollback of the stack.
+	// Default: 30 minutes.
+	//
 	// Experimental.
 	Timeout awscdk.Duration `field:"optional" json:"timeout" yaml:"timeout"`
 }

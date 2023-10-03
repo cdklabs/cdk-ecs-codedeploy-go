@@ -9,7 +9,7 @@ import (
 	"github.com/aws/aws-cdk-go/awscdk/v2/awsec2"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awsiam"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awss3"
-	"github.com/aws/aws-cdk-go/awscdksyntheticsalpha/v2"
+	"github.com/aws/aws-cdk-go/awscdk/v2/awssynthetics"
 	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/cdklabs/cdk-ecs-codedeploy-go/cdklabscdkecscodedeploy/internal"
 )
@@ -17,7 +17,7 @@ import (
 // A CloudWatch Synthetic Canary for monitoring APIs.
 // Experimental.
 type ApiCanary interface {
-	awscdksyntheticsalpha.Canary
+	awssynthetics.Canary
 	// Bucket where data from each canary run is stored.
 	// Experimental.
 	ArtifactsBucket() awss3.IBucket
@@ -107,6 +107,8 @@ type ApiCanary interface {
 	// Experimental.
 	GetResourceNameAttribute(nameAttr *string) *string
 	// Measure the Duration of a single canary run, in seconds.
+	// Default: avg over 5 minutes.
+	//
 	// Experimental.
 	MetricDuration(options *awscloudwatch.MetricOptions) awscloudwatch.Metric
 	// Measure the number of failed canary runs over a given time period.
@@ -115,6 +117,8 @@ type ApiCanary interface {
 	// Experimental.
 	MetricFailed(options *awscloudwatch.MetricOptions) awscloudwatch.Metric
 	// Measure the percentage of successful canary runs.
+	// Default: avg over 5 minutes.
+	//
 	// Experimental.
 	MetricSuccessPercent(options *awscloudwatch.MetricOptions) awscloudwatch.Metric
 	// Returns a string representation of this construct.
@@ -124,7 +128,7 @@ type ApiCanary interface {
 
 // The jsii proxy struct for ApiCanary
 type jsiiProxy_ApiCanary struct {
-	internal.Type__awscdksyntheticsalphaCanary
+	internal.Type__awssyntheticsCanary
 }
 
 func (j *jsiiProxy_ApiCanary) ArtifactsBucket() awss3.IBucket {

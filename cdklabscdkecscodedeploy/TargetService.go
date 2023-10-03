@@ -19,14 +19,20 @@ type TargetService struct {
 	// Experimental.
 	TaskDefinition awsecs.ITaskDefinition `field:"required" json:"taskDefinition" yaml:"taskDefinition"`
 	// Network configuration for ECS services that have a network type of `awsvpc`.
+	// Default: reuse current network settings for ECS service.
+	//
 	// Experimental.
 	AwsvpcConfiguration *AwsvpcConfiguration `field:"optional" json:"awsvpcConfiguration" yaml:"awsvpcConfiguration"`
 	// A list of Amazon ECS capacity providers to use for the deployment.
+	// Default: reuse current capcity provider strategy for ECS service.
+	//
 	// Experimental.
 	CapacityProviderStrategy *[]*awsecs.CapacityProviderStrategy `field:"optional" json:"capacityProviderStrategy" yaml:"capacityProviderStrategy"`
 	// The platform version of the Fargate tasks in the deployed Amazon ECS service.
 	//
 	// see: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html
+	// Default: LATEST.
+	//
 	// Experimental.
 	PlatformVersion awsecs.FargatePlatformVersion `field:"optional" json:"platformVersion" yaml:"platformVersion"`
 }

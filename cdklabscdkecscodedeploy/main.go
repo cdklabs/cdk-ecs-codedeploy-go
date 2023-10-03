@@ -36,7 +36,7 @@ func init() {
 		},
 		func() interface{} {
 			j := jsiiProxy_ApiCanary{}
-			_jsii_.InitJsiiProxy(&j.Type__awscdksyntheticsalphaCanary)
+			_jsii_.InitJsiiProxy(&j.Type__awssyntheticsCanary)
 			return &j
 		},
 	)
