@@ -343,7 +343,7 @@ type ApplicationLoadBalancedCodeDeployedFargateServiceProps struct {
 	// Default: - no health check is configured.
 	//
 	// Experimental.
-	HealthCheck *awselasticloadbalancingv2.HealthCheck `field:"optional" json:"healthCheck" yaml:"healthCheck"`
+	HealthCheck *awsecs.HealthCheck `field:"optional" json:"healthCheck" yaml:"healthCheck"`
 	// Optional lifecycle hooks.
 	// Default: - no lifecycle hooks.
 	//
