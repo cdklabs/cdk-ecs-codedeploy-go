@@ -282,6 +282,11 @@ type ApplicationLoadBalancedCodeDeployedFargateServiceProps struct {
 	//
 	// Experimental.
 	AssignPublicIp *bool `field:"optional" json:"assignPublicIp" yaml:"assignPublicIp"`
+	// The health check command and associated configuration parameters for the container.
+	// Default: - Health check configuration from container.
+	//
+	// Experimental.
+	HealthCheck *awsecs.HealthCheck `field:"optional" json:"healthCheck" yaml:"healthCheck"`
 	// The security groups to associate with the service.
 	//
 	// If you do not specify a security group, a new security group is created.
@@ -339,11 +344,6 @@ type ApplicationLoadBalancedCodeDeployedFargateServiceProps struct {
 	//
 	// Experimental.
 	DeregistrationDelay awscdk.Duration `field:"optional" json:"deregistrationDelay" yaml:"deregistrationDelay"`
-	// The healthcheck to configure on the Application Load Balancer target groups.
-	// Default: - no health check is configured.
-	//
-	// Experimental.
-	HealthCheck *awsecs.HealthCheck `field:"optional" json:"healthCheck" yaml:"healthCheck"`
 	// Optional lifecycle hooks.
 	// Default: - no lifecycle hooks.
 	//
@@ -354,6 +354,11 @@ type ApplicationLoadBalancedCodeDeployedFargateServiceProps struct {
 	//
 	// Experimental.
 	ResponseTimeAlarmThreshold awscdk.Duration `field:"optional" json:"responseTimeAlarmThreshold" yaml:"responseTimeAlarmThreshold"`
+	// The healthcheck to configure on the Application Load Balancer target groups.
+	// Default: - no health check is configured.
+	//
+	// Experimental.
+	TargetHealthCheck *awselasticloadbalancingv2.HealthCheck `field:"optional" json:"targetHealthCheck" yaml:"targetHealthCheck"`
 	// The time to wait before terminating the original (blue) task set.
 	// Default: - 10 minutes.
 	//
