@@ -329,11 +329,21 @@ type ApplicationLoadBalancedCodeDeployedFargateServiceProps struct {
 	//
 	// Experimental.
 	ApiTestSteps *[]*ApiTestStep `field:"optional" json:"apiTestSteps" yaml:"apiTestSteps"`
+	// The physical, human-readable name of the CodeDeploy Application.
+	// Default: an auto-generated name will be used.
+	//
+	// Experimental.
+	ApplicationName *string `field:"optional" json:"applicationName" yaml:"applicationName"`
 	// The deployment configuration to use for the deployment group.
 	// Default: - EcsDeploymentConfig.ALL_AT_ONCE
 	//
 	// Experimental.
 	DeploymentConfig awscodedeploy.IEcsDeploymentConfig `field:"optional" json:"deploymentConfig" yaml:"deploymentConfig"`
+	// The physical, human-readable name of the CodeDeploy Deployment Group.
+	// Default: An auto-generated name will be used.
+	//
+	// Experimental.
+	DeploymentGroupName *string `field:"optional" json:"deploymentGroupName" yaml:"deploymentGroupName"`
 	// The timeout for a CodeDeploy deployment.
 	// Default: - 60 minutes.
 	//
