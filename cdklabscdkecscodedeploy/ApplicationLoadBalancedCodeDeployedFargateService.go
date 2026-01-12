@@ -440,6 +440,17 @@ func ApplicationLoadBalancedCodeDeployedFargateService_IsConstruct(x interface{}
 	return returns
 }
 
+func ApplicationLoadBalancedCodeDeployedFargateService_PROPERTY_INJECTION_ID() *string {
+	_init_.Initialize()
+	var returns *string
+	_jsii_.StaticGet(
+		"@cdklabs/cdk-ecs-codedeploy.ApplicationLoadBalancedCodeDeployedFargateService",
+		"PROPERTY_INJECTION_ID",
+		&returns,
+	)
+	return returns
+}
+
 func (a *jsiiProxy_ApplicationLoadBalancedCodeDeployedFargateService) AddServiceAsTarget(service awsecs.BaseService) {
 	if err := a.validateAddServiceAsTargetParameters(service); err != nil {
 		panic(err)

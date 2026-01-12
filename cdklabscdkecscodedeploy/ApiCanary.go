@@ -10,6 +10,7 @@ import (
 	"github.com/aws/aws-cdk-go/awscdk/v2/awsiam"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awss3"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awssynthetics"
+	"github.com/aws/aws-cdk-go/awscdk/v2/interfaces"
 	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/cdklabs/cdk-ecs-codedeploy-go/cdklabscdkecscodedeploy/internal"
 )
@@ -44,14 +45,15 @@ type ApiCanary interface {
 	SetDurationAlarm(val awscloudwatch.Alarm)
 	// The environment this resource belongs to.
 	//
-	// For resources that are created and managed by the CDK
-	// (generally, those created by creating new class instances like Role, Bucket, etc.),
-	// this is always the same as the environment of the stack they belong to;
-	// however, for imported resources
-	// (those obtained from static methods like fromRoleArn, fromBucketName, etc.),
-	// that might be different than the stack they were imported into.
+	// For resources that are created and managed in a Stack (those created by
+	// creating new class instances like `new Role()`, `new Bucket()`, etc.), this
+	// is always the same as the environment of the stack they belong to.
+	//
+	// For referenced resources (those obtained from referencing methods like
+	// `Role.fromRoleArn()`, `Bucket.fromBucketName()`, etc.), they might be
+	// different than the stack they were imported into.
 	// Experimental.
-	Env() *awscdk.ResourceEnvironment
+	Env() *interfaces.ResourceEnvironment
 	// The tree node.
 	// Experimental.
 	Node() constructs.Node
@@ -191,8 +193,8 @@ func (j *jsiiProxy_ApiCanary) DurationAlarm() awscloudwatch.Alarm {
 	return returns
 }
 
-func (j *jsiiProxy_ApiCanary) Env() *awscdk.ResourceEnvironment {
-	var returns *awscdk.ResourceEnvironment
+func (j *jsiiProxy_ApiCanary) Env() *interfaces.ResourceEnvironment {
+	var returns *interfaces.ResourceEnvironment
 	_jsii_.Get(
 		j,
 		"env",
@@ -359,6 +361,17 @@ func ApiCanary_IsResource(construct constructs.IConstruct) *bool {
 		&returns,
 	)
 
+	return returns
+}
+
+func ApiCanary_PROPERTY_INJECTION_ID() *string {
+	_init_.Initialize()
+	var returns *string
+	_jsii_.StaticGet(
+		"@cdklabs/cdk-ecs-codedeploy.ApiCanary",
+		"PROPERTY_INJECTION_ID",
+		&returns,
+	)
 	return returns
 }
 

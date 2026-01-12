@@ -101,6 +101,11 @@ type ApplicationLoadBalancedCodeDeployedFargateServiceProps struct {
 	//
 	// Experimental.
 	IdleTimeout awscdk.Duration `field:"optional" json:"idleTimeout" yaml:"idleTimeout"`
+	// The type of IP address to use.
+	// Default: - IpAddressType.IPV4
+	//
+	// Experimental.
+	IpAddressType awselasticloadbalancingv2.IpAddressType `field:"optional" json:"ipAddressType" yaml:"ipAddressType"`
 	// Listener port of the application load balancer that will serve traffic to the service.
 	// Default: - The default listener port is determined from the protocol (port 80 for HTTP,
 	// port 443 for HTTPS). A domain name and zone must be also be specified if using HTTPS.
@@ -171,7 +176,9 @@ type ApplicationLoadBalancedCodeDeployedFargateServiceProps struct {
 	//
 	// Experimental.
 	RecordType awsecspatterns.ApplicationLoadBalancedServiceRecordType `field:"optional" json:"recordType" yaml:"recordType"`
-	// Specifies whether the load balancer should redirect traffic on port 80 to port 443 to support HTTP->HTTPS redirects This is only valid if the protocol of the ALB is HTTPS.
+	// Specifies whether the load balancer should redirect traffic on port 80 to the {@link listenerPort} to support HTTP->HTTPS redirects.
+	//
+	// This is only valid if the protocol of the ALB is HTTPS.
 	// Default: false.
 	//
 	// Experimental.
@@ -290,6 +297,19 @@ type ApplicationLoadBalancedCodeDeployedFargateServiceProps struct {
 	//
 	// Experimental.
 	AssignPublicIp *bool `field:"optional" json:"assignPublicIp" yaml:"assignPublicIp"`
+	// The minimum number of CPU units to reserve for the container.
+	// Default: - No minimum CPU units reserved.
+	//
+	// Experimental.
+	ContainerCpu *float64 `field:"optional" json:"containerCpu" yaml:"containerCpu"`
+	// The amount (in MiB) of memory to present to the container.
+	//
+	// If your container attempts to exceed the allocated memory, the container
+	// is terminated.
+	// Default: - No memory limit.
+	//
+	// Experimental.
+	ContainerMemoryLimitMiB *float64 `field:"optional" json:"containerMemoryLimitMiB" yaml:"containerMemoryLimitMiB"`
 	// The health check command and associated configuration parameters for the container.
 	// Default: - Health check configuration from container.
 	//

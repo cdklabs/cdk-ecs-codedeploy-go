@@ -37,8 +37,8 @@ See https://www.nuget.org/packages/Cdklabs.CdkEcsCodeDeploy/
 CodeDeploy for ECS can manage the deployment of new task definitions to ECS services.  Only 1 deployment construct can be defined for a given EcsDeploymentGroup.
 
 ```go
-var deploymentGroup iEcsDeploymentGroup
-var taskDefinition iTaskDefinition
+var deploymentGroup IEcsDeploymentGroup
+var taskDefinition ITaskDefinition
 
 
 cdklabscdkecscodedeploy.NewEcsDeployment(&EcsDeploymentProps{
@@ -54,8 +54,8 @@ cdklabscdkecscodedeploy.NewEcsDeployment(&EcsDeploymentProps{
 The deployment will use the AutoRollbackConfig for the EcsDeploymentGroup unless it is overridden in the deployment:
 
 ```go
-var deploymentGroup iEcsDeploymentGroup
-var taskDefinition iTaskDefinition
+var deploymentGroup IEcsDeploymentGroup
+var taskDefinition ITaskDefinition
 
 
 cdklabscdkecscodedeploy.NewEcsDeployment(&EcsDeploymentProps{
@@ -76,8 +76,8 @@ cdklabscdkecscodedeploy.NewEcsDeployment(&EcsDeploymentProps{
 By default, the deployment will timeout after 30 minutes. The timeout value can be overridden:
 
 ```go
-var deploymentGroup iEcsDeploymentGroup
-var taskDefinition iTaskDefinition
+var deploymentGroup IEcsDeploymentGroup
+var taskDefinition ITaskDefinition
 
 
 cdklabscdkecscodedeploy.NewEcsDeployment(&EcsDeploymentProps{
@@ -100,8 +100,8 @@ canary := cdklabscdkecscodedeploy.NewApiCanary(stack, jsii.String("Canary"), &Ap
 	BaseUrl: jsii.String("https://xkcd.com"),
 	DurationAlarmThreshold: awscdk.Duration_Seconds(jsii.Number(5)),
 	ThreadCount: jsii.Number(5),
-	Steps: []apiTestStep{
-		&apiTestStep{
+	Steps: []ApiTestStep{
+		&ApiTestStep{
 			Name: jsii.String("info"),
 			Path: jsii.String("/908/info.0.json"),
 			JmesPath: jsii.String("safe_title"),
@@ -116,16 +116,16 @@ canary := cdklabscdkecscodedeploy.NewApiCanary(stack, jsii.String("Canary"), &Ap
 An L3 construct named `ApplicationLoadBalancedCodeDeployedFargateService` extends [ApplicationLoadBalancedFargateService](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs_patterns.ApplicationLoadBalancedFargateService.html) and adds support for deploying new versions of the service with AWS CodeDeploy. Additionally, an Amazon CloudWatch Synthetic canary is created via the `ApiCanary` construct and is monitored by the CodeDeploy deployment to trigger rollback if the canary begins to alarm.
 
 ```go
-var cluster iCluster
-var image containerImage
+var cluster ICluster
+var image ContainerImage
 
 service := cdklabscdkecscodedeploy.NewApplicationLoadBalancedCodeDeployedFargateService(stack, jsii.String("Service"), &ApplicationLoadBalancedCodeDeployedFargateServiceProps{
 	Cluster: Cluster,
 	TaskImageOptions: &ApplicationLoadBalancedTaskImageOptions{
 		Image: *Image,
 	},
-	ApiTestSteps: []apiTestStep{
-		&apiTestStep{
+	ApiTestSteps: []ApiTestStep{
+		&ApiTestStep{
 			Name: jsii.String("health"),
 			Path: jsii.String("/health"),
 			JmesPath: jsii.String("status"),
